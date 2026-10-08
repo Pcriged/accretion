@@ -40,3 +40,7 @@ python -m http.server 8765
 ```
 
 System audio capture works in Chrome and Edge: tick "Share system audio" in the picker. Microphone and system audio need HTTPS or localhost.
+
+## License
+
+[MIT](LICENSE)
