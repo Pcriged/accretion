@@ -2,9 +2,15 @@
 
 Music visualizers built around a black hole, running in the browser with WebGL 2. No build step and no dependencies.
 
-## Versions
+**Try it live:**
+- **[Accretion](https://pcriged.github.io/accretion/Realistic/)**, the realistic black hole
+- **[Event Horizon](https://pcriged.github.io/accretion/)**, the original psychedelic version
 
-### `Realistic/`: Accretion
+Press **Demo groove** for built-in music, or load a track, use your microphone, or capture system audio.
+
+![Accretion: a black hole whose disc is fed by a chord-coloured stream of music](docs/screenshots/accretion-hero.jpg)
+
+## Accretion (`Realistic/`)
 
 A physically based black hole that feeds on your music.
 
@@ -13,18 +19,24 @@ A physically based black hole that feeds on your music.
 - **Music as fuel**: the live spectrum is injected as a stream of gas (bass on the inside edge, treble outside) that spirals in and is sheared into the disc. Stream width follows loudness, colour follows the detected chord root, and beats cause flares.
 - **Speaker pump**: gravity, and with it the lensing, thumps outward on every kick.
 
+| Chord colours wound into the disc | Cinematic preset |
+| --- | --- |
+| ![Top-down view of the disc banded with chord colours](docs/screenshots/accretion-top.jpg) | ![Warm, film-style black hole with lensed disc](docs/screenshots/accretion-cinematic.jpg) |
+
 Drag to orbit, scroll to zoom. Keys: Space play/pause, H hide panel, F fullscreen.
 
-### Root folder: Event Horizon
+## Event Horizon (root folder)
 
 The original, stylised and psychedelic version.
 
-## Running
+![Event Horizon: a psychedelic black hole with a rainbow audio stream](docs/screenshots/event-horizon.jpg)
 
-Serve the folder over HTTP, then open `http://localhost:8765/` (original) or `http://localhost:8765/Realistic/`:
+## Running locally
+
+Serve the folder over HTTP, then open `http://localhost:8765/` (Event Horizon) or `http://localhost:8765/Realistic/` (Accretion):
 
 ```bash
 python -m http.server 8765
 ```
 
-Audio sources: a local file, the microphone, system audio (Chrome or Edge: tick "Share system audio"), or the built-in demo groove.
+System audio capture works in Chrome and Edge: tick "Share system audio" in the picker. Microphone and system audio need HTTPS or localhost.
