@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "visualizer",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [".claude/serve.py"],
+      "port": 8765,
+      "autoPort": true
+    }
+  ]
+}

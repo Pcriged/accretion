@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accretion · Black Hole Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="stage" aria-label="Black hole visualization"></canvas>
+
+  <div id="hint" class="hint">
+    Load a track, use your microphone, or try the demo groove.<br>
+    <small>Drag to orbit · scroll to zoom</small>
+  </div>
+
+  <main id="ui" class="ui">
+    <header>
+      <h1>Accretion</h1>
+      <p class="sub">a black hole that feeds on your music</p>
+    </header>
+
+    <section class="row sources">
+      <label class="btn" for="file">Load audio</label>
+      <input id="file" type="file" accept="audio/*" hidden>
+      <button id="mic" class="btn" type="button">Microphone</button>
+      <button id="system" class="btn" type="button">System audio</button>
+      <button id="demo" class="btn" type="button">Demo groove</button>
+    </section>
+
+    <section class="row transport">
+      <button id="play" class="btn icon" type="button" aria-label="Play or pause" disabled>▶</button>
+      <span id="track" class="track">No source</span>
+      <span id="chord" class="chord" aria-label="Detected chord"></span>
+    </section>
+
+    <p id="error" class="error" hidden></p>
+
+    <details class="controls" open>
+      <summary>Controls</summary>
+
+      <div class="presets">
+        <button class="btn" type="button" data-preset="physical">Physical</button>
+        <button class="btn" type="button" data-preset="cinematic">Cinematic</button>
+        <button class="btn" type="button" data-preset="quasar">Quasar</button>
+      </div>
+
+      <h2>Music</h2>
+      <label class="slider">
+        <span>Sensitivity <output data-for="sens"></output></span>
+        <input type="range" data-param="sens" min="0" max="2" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Feeding rate <output data-for="feed"></output></span>
+        <input type="range" data-param="feed" min="0" max="3" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Ambient disc <output data-for="base"></output></span>
+        <input type="range" data-param="base" min="0" max="3" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Music colour <output data-for="tint"></output></span>
+        <input type="range" data-param="tint" min="0" max="1" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Time flow <output data-for="speed"></output></span>
+        <input type="range" data-param="speed" min="5" max="80" step="1">
+      </label>
+
+      <h2>Physics</h2>
+      <label class="slider">
+        <span>Gravity (lensing) <output data-for="gravity"></output></span>
+        <input type="range" data-param="gravity" min="0" max="1.5" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Speaker pump <output data-for="pump"></output></span>
+        <input type="range" data-param="pump" min="0" max="1.5" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Doppler beaming <output data-for="doppler"></output></span>
+        <input type="range" data-param="doppler" min="0" max="1" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Disc temperature <output data-for="temp"></output></span>
+        <input type="range" data-param="temp" min="2500" max="20000" step="100">
+      </label>
+
+      <h2>Camera</h2>
+      <label class="slider">
+        <span>Exposure <output data-for="exposure"></output></span>
+        <input type="range" data-param="exposure" min="0.2" max="4" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Bloom <output data-for="bloom"></output></span>
+        <input type="range" data-param="bloom" min="0" max="1" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Auto orbit <output data-for="orbit"></output></span>
+        <input type="range" data-param="orbit" min="0" max="0.3" step="0.005">
+      </label>
+      <label class="slider">
+        <span>Render quality <output data-for="quality"></output></span>
+        <input type="range" data-param="quality" min="0.35" max="1" step="0.05">
+      </label>
+
+      <div class="row">
+        <button id="fullscreen" class="btn" type="button">Fullscreen</button>
+        <button id="reset-view" class="btn" type="button">Reset view</button>
+      </div>
+      <p class="keys">Space play/pause · H hide panel · F fullscreen · drag to orbit · scroll to zoom</p>
+    </details>
+  </main>
+
+  <button id="hide" class="btn corner" type="button" aria-label="Toggle panel">Hide UI</button>
+
+  <script src="audio.js"></script>
+  <script src="renderer.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

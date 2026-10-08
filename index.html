@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Event Horizon · Music Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <canvas id="stage" aria-label="Music visualization"></canvas>
+
+  <div id="hint" class="hint">
+    Load a track, use your microphone, or try the demo groove.
+  </div>
+
+  <main id="ui" class="ui">
+    <header>
+      <h1>Event Horizon</h1>
+      <p class="sub">gravity meets psychedelia</p>
+    </header>
+
+    <section class="row sources">
+      <label class="btn" for="file">Load audio</label>
+      <input id="file" type="file" accept="audio/*" hidden>
+      <button id="mic" class="btn" type="button">Microphone</button>
+      <button id="system" class="btn" type="button">System audio</button>
+      <button id="demo" class="btn" type="button">Demo groove</button>
+    </section>
+
+    <section class="row transport">
+      <button id="play" class="btn icon" type="button" aria-label="Play or pause" disabled>▶</button>
+      <span id="track" class="track">No source</span>
+    </section>
+
+    <p id="error" class="error" hidden></p>
+
+    <details class="controls" open>
+      <summary>Controls</summary>
+
+      <div class="presets">
+        <button class="btn" type="button" data-preset="singularity">Singularity</button>
+        <button class="btn" type="button" data-preset="horizon">Horizon</button>
+        <button class="btn" type="button" data-preset="acid">Acid bloom</button>
+      </div>
+
+      <label class="slider">
+        <span>Sensitivity <output data-for="sens"></output></span>
+        <input type="range" data-param="sens" min="0" max="2" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Lensing <output data-for="lens"></output></span>
+        <input type="range" data-param="lens" min="0" max="1.2" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Psychedelia <output data-for="psy"></output></span>
+        <input type="range" data-param="psy" min="0" max="1" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Wave <output data-for="wave"></output></span>
+        <input type="range" data-param="wave" min="0" max="2" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Trails <output data-for="trail"></output></span>
+        <input type="range" data-param="trail" min="0" max="0.95" step="0.01">
+      </label>
+      <label class="slider">
+        <span>Hue drift <output data-for="hue"></output></span>
+        <input type="range" data-param="hue" min="0" max="2" step="0.01">
+      </label>
+
+      <div class="row">
+        <button id="fullscreen" class="btn" type="button">Fullscreen</button>
+      </div>
+      <p class="keys">Space play/pause · H hide panel · F fullscreen</p>
+    </details>
+  </main>
+
+  <button id="hide" class="btn corner" type="button" aria-label="Toggle panel">Hide UI</button>
+
+  <script src="audio.js"></script>
+  <script src="wave.js"></script>
+  <script src="renderer.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
